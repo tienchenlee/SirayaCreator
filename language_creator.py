@@ -340,11 +340,13 @@ class LanguageCreatorGame:
             if self.vocabulary['noun'] and self.vocabulary['verb']:
                 NOM = self.vocabulary['case'][0]
                 OBL = self.vocabulary['case'][1]
-                noun = random.choice(self.vocabulary['noun'])
+                subjNoun = random.choice(self.vocabulary['noun'])
+                nounLIST = [n for n in self.vocabulary['noun'] if n != subjNoun]
+                objNoun = random.choice(nounLIST)
 
-                subject = f"{NOM} {noun}"
+                subject = f"{NOM} {subjNoun}"
                 verb = random.choice(self.vocabulary['verb'])
-                obj = f"{OBL} {noun}"
+                obj = f"{OBL} {objNoun}"
 
                 # 添加一些構詞變化在動詞上
                 if self.morphology.rules:
